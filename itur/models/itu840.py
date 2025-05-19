@@ -690,7 +690,7 @@ def cloud_attenuation(lat, lon, el, f, p, Lred=None):
 
 
 def lognormal_approximation_coefficient(lat, lon):
-    """
+    r"""
     Total columnar contents of cloud liquid water distribution coefficients.
 
     The annual statistics of the total columnar content of reduced cloud

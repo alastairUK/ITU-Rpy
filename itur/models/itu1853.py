@@ -104,8 +104,8 @@ class _ITU1853_1():
         # the probability the attenuation Ai (dB) is exceeded where Pi < P_K
         p_i = np.array([0.01, 0.02, 0.03, 0.05,
                         0.1, 0.2, 0.3, 0.5, 1, 2, 3, 5, 10])
-        Pi = np.array([p for p in p_i if p < P_rain * 100], dtype=np.float)
-        Ai = np.array([0 for p in p_i if p < P_rain * 100], dtype=np.float)
+        Pi = np.array([p for p in p_i if p < P_rain * 100], dtype=float)
+        Ai = np.array([0 for p in p_i if p < P_rain * 100], dtype=float)
 
         for i, p in enumerate(Pi):
             Ai[i] = rain_attenuation(lat, lon, f, el, hs, p, tau=tau).value
@@ -435,7 +435,6 @@ def get_version():
         Version currently being used.
 
     """
-    global __model
     return __model.__version__
 
 
@@ -493,8 +492,6 @@ def rain_attenuation_synthesis(lat, lon, f, el, hs, Ns, Ts=1, tau=45, n=None):
     [1] Characteristics of precipitation for propagation modelling
     https://www.itu.int/rec/R-REC-P.1853/en
     """
-    global __model
-
     lon = np.mod(lon, 360)
     f = prepare_quantity(f, u.GHz, 'Frequency')
     el = prepare_quantity(el, u.deg, 'Elevation angle')
@@ -532,8 +529,6 @@ def scintillation_attenuation_synthesis(Ns, f_c=0.1, Ts=1):
     [1] Characteristics of precipitation for propagation modelling
     https://www.itu.int/rec/R-REC-P.1853/en
     """
-    global __model
-
     val = __model.scintillation_attenuation_synthesis(Ns, f_c, Ts)
     return val * u.dB
 
@@ -568,8 +563,6 @@ def integrated_water_vapour_synthesis(lat, lon, Ns, Ts=1, n=None):
     [1] Characteristics of precipitation for propagation modelling
     https://www.itu.int/rec/R-REC-P.1853/en
     """
-    global __model
-
     lon = np.mod(lon, 360)
     val = __model.integrated_water_vapour_synthesis(lat, lon, Ns, Ts, n)
     return val * u.kg / u.m**2
@@ -604,8 +597,6 @@ def cloud_liquid_water_synthesis(lat, lon, Ns, Ts=1, n=None):
     [1] Characteristics of precipitation for propagation modelling
     https://www.itu.int/rec/R-REC-P.1853/en
     """
-    global __model
-
     lon = np.mod(lon, 360)
     val = __model.cloud_liquid_water_synthesis(lat, lon, Ns, Ts, n)
     return val * u.mm
@@ -681,8 +672,6 @@ def total_attenuation_synthesis(lat, lon, f, el, p, D, Ns, Ts=1, hs=None,
     [1] Characteristics of precipitation for propagation modelling
     https://www.itu.int/rec/R-REC-P.1853/en
     """
-    global __model
-
     f = prepare_quantity(f, u.GHz, 'Frequency')
     el = prepare_quantity(el, u.deg, 'Elevation angle')
     D = prepare_quantity(D, u.m, 'Antenna diameter')

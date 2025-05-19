@@ -280,7 +280,7 @@ def get_version():
 
 
 def rain_specific_attenuation_coefficients(f, el, tau):
-    """Compute the values for the coefficients k and α.
+    r"""Compute the values for the coefficients k and α.
 
     A method to compute the values for the coefficients k and α to compute
     the rain specific attenuation :math:`\gamma_R` (dB/km) (dB/km)

@@ -11,7 +11,7 @@ import itur.models as models
 from itur import atmospheric_attenuation_slant_path
 
 
-pd.set_option('display.max_colwidth', -1)
+pd.set_option('display.max_colwidth', None)
 basepath = path.dirname(path.realpath(__file__))
 test_data = path.join(basepath, 'test_data')
 html_path = path.join(basepath, '../docs/validation')
@@ -240,7 +240,7 @@ class ITU_TestCase(test.TestCase):
 
     def read_csv(self, path_name, columns):
         self.path_name = path_name
-        df = pd.read_csv(path_name, sep=',', skiprows=range(1, 2))
+        df = pd.read_csv(path_name, sep=',', skiprows=range(1, 2), encoding='cp1252')
         units = pd.read_csv(path_name, sep=',', nrows=2, encoding='cp1252')
         self.units = dict(units[columns].iloc[0])
         return df[columns]
