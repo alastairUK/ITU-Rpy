@@ -3,6 +3,7 @@ import os
 import sys
 import numpy as np
 import unittest as test
+import itur.models as models
 
 from astropy import units as u
 
