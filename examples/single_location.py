@@ -17,11 +17,11 @@ lat = 41.39
 lon = -71.05
 
 # Link parameters
-el = 60                # Elevation angle equal to 60 degrees
-f = 22.5 * itur.u.GHz  # Frequency equal to 22.5 GHz
-D = 1 * itur.u.m       # Receiver antenna diameter of 1 m
-p = 0.1                # We compute values exceeded during 0.1 % of the average
-                       # year
+el = 60                 # Elevation angle equal to 60 degrees
+f = 22.5 * itur.u.GHz   # Frequency equal to 22.5 GHz
+D = 1 * itur.u.m        # Receiver antenna diameter of 1 m
+p = 0.1                 # We compute values exceeded during 0.1 % of the average
+                        # year
 
 # Compute atmospheric parameters
 hs = itur.topographic_altitude(lat, lon)

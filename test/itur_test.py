@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-import warnings
 import numpy as np
 import unittest as test
-
-import itur
-import itur.models as models
 
 from astropy import units as u
 
@@ -477,8 +473,6 @@ class TestFunctionsRecommendation453(test.TestCase):
             models.itu453.change_version(version)
             self.test_all_functions_453()
             self.assertEqual(models.itu453.get_version(), version)
-
-
 
 class TestFunctionsRecommendation530(test.TestCase):
     def setUp(self):
